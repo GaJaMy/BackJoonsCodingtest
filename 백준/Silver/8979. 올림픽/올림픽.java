@@ -12,6 +12,7 @@ public class Main {
 		int gold;
 		int silver;
 		int bronze;
+		int rank;
 
 		public country(int number, int gold, int silver,int bronze) {
 			this.number = number;
@@ -63,9 +64,19 @@ public class Main {
 			}
 		});
 
+		arr[0].rank = 1;
+
+		for (int i = 1; i < N; i++) {
+			if (arr[i-1].gold == arr[i].gold && arr[i-1].silver == arr[i].silver && arr[i-1].bronze == arr[i].bronze) {
+				arr[i].rank = arr[i-1].rank;
+			} else {
+				arr[i].rank = i + 1;
+			}
+		}
+
 		for (int i = 0; i < N; i++) {
 			if (arr[i].number == K) {
-				System.out.println(i);
+				System.out.println(arr[i].rank);
 				break;
 			}
 		}
